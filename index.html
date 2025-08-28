@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De Mol Spinner</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            width:100%;
+            height:100%;
+            overflow:hidden;
+        }
+        #spinner{
+            width:45vw;
+            height:45vw;
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+            background-color:rgb(220, 249, 220);
+            border:10px solid black;
+            border-radius:50%;
+            overflow:hidden;
+            transition:15s;
+            z-index:997;
+        }
+
+        .optiemol{
+            width:50%;
+            height:50%;
+            background-color:rgb(57, 144, 57);
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            color:white;
+            font-family:arial;
+            padding:2vw;
+        }
+
+        .optiemol h1{
+            transform:rotate(45deg);
+            font-size:2vw;
+        }
+
+        .optienmol{
+            width:50%;
+            height:50%;
+            background-color:rgb(220, 47, 47);
+            position:absolute;
+            top:50%;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            color:white;
+            font-family:arial;
+        }
+
+        .optienmol h1{
+            position:absolute;
+            top:30%;
+            left:20%;
+            transform:rotate(-45deg);
+            font-size:1.80vw;
+        }
+
+        .optiemol2{
+            width:50%;
+            height:50%;
+            background-color:rgb(57, 144, 57);
+            position:absolute;
+            top:50%;
+            left:50%;
+            /*display:flex;
+            align-items:start;
+            justify-content:start;*/
+            color:white;
+            font-family:arial;
+        }
+
+        .optiemol2 h1{
+            position:absolute;
+            top:25%;
+            left:2%;
+            transform:rotate(45deg);
+            font-size:2vw;
+        }
+
+        .optienmol2{
+            width:50%;
+            height:50%;
+            background-color:rgb(220, 47, 47);
+            position:absolute;
+            top:0%;
+            left:50%;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            color:white;
+            font-family:arial;
+        }
+
+        .optienmol2 h1{
+            position:absolute;
+            top:47%;
+            left:3%;
+            font-size:1.8vw;
+            transform:rotate(-45deg);
+        }
+
+        #spinbutton{
+            width:5vw;
+            height:5vw;
+            color:black;
+            background-color:white;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            border-radius:50%;
+            font-family:arial;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+            z-index:998;
+        }
+
+        #spinselect{
+            background: url("https://static.thenounproject.com/png/3455956-200.png");
+            background-size:cover;
+            width:10vw;
+            height:10vw;
+            position:absolute;
+            left:50%;
+            top:10%;
+            transform:translate(-50%,-50%) rotate(180deg);
+            display:flex;
+            z-index:998;
+        }
+
+        #boodschap{
+            width:100dvw;
+            height:100dvh;
+            background-color:rgba(0, 0, 0, 0.909);
+            color:white;
+            display:none;
+            opacity:0;
+            align-items:center;
+            justify-content:center;
+            z-index:999;
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+            font-family:arial;
+            transition:1s;
+        }
+
+        @media only screen and (max-width: 740px) {
+            #spinner{
+            width:80vw;
+            height:80vw;
+            }
+        .optienmol2 h1{
+            position:absolute;
+            top:47%;
+            left:3%;
+            font-size:3vw;
+            transform:rotate(-45deg);
+        }
+        .optienmol h1{
+            font-size:3vw;
+            transform:rotate(-45deg);
+        }
+         .optiemol2 h1{
+            font-size:3.5vw;
+        }
+        .optiemol h1{
+            font-size:3.5vw;
+        }
+        .optiemol{
+            padding:4vw;
+        }
+        #spinbutton{
+            width:12vw;
+            height:12vw;
+            color:black;
+            background-color:white;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            border-radius:50%;
+            font-family:arial;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+            font-size:1.85vw;
+        }
+        #spinselect{
+            background: url("https://static.thenounproject.com/png/3455956-200.png");
+            background-size:cover;
+            width:22vw;
+            height:22vw;
+            position:absolute;
+            left:50%;
+            top:28%;
+            transform:translate(-50%,-50%) rotate(180deg);
+        }
+        }
+    </style>
+</head>
+<body onload="check()">
+    <div id="boodschap">
+        <h2>Je bent niet De Mol!</h2>
+    </div>
+    <div id="spinner">
+        <div class="optiemol">
+            <h1>Je Bent De Mol</h1>
+        </div>
+        <div class="optienmol">
+            <h1>Je Bent Niet De Mol</h1>
+        </div>
+        <div class="optiemol2">
+            <h1>Je Bent De Mol</h1>
+        </div>
+        <div class="optienmol2">
+            <h1>Je Bent De Mol!</h1>
+        </div>
+    </div>
+    <div id="spinselect"></div>
+    <div id="spinbutton" onclick="spin()">
+        <h2>SPIN!</h2>
+    </div>
+    
+
+
+    <script>
+        function spin(){
+            document.getElementById("boodschap").style.display = "flex";
+            document.getElementById("spinner").style.transform = "translate(-50%,-50%) rotate(-24815deg)";
+            setTimeout(function() {
+                document.getElementById("boodschap").style.opacity = "1";
+            }, 15000);
+            localStorage.setItem("algdn", "ja");
+        }
+
+        function check(){
+            var jef = localStorage.getItem("algdn");
+            if(jef === "ja"){
+                document.getElementById("boodschap").style.display="flex";
+                document.getElementById("boodschap").style.opacity = "1";
+            }
+        }
+    </script>
+</body>
+</html>
